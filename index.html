@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="BABE AI — Your personal intelligence. Discover a premium AI experience for chat, voice and everyday assistance.">
+  <title>BABE AI — Your Personal Intelligence</title>
+
+  <style>
+    :root {
+      --bg: #090909;
+      --panel: #11100e;
+      --gold: #f5c66a;
+      --gold-light: #ffe7a6;
+      --muted: #aaa49a;
+      --border: rgba(245, 198, 106, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 50% 12%, #2a1d0d 0%, transparent 35%),
+        var(--bg);
+      color: #fffaf0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    button, a {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .brand {
+      color: var(--gold-light);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      color: #d2c9b8;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      color: var(--gold-light);
+    }
+
+    .header-button, .primary-button, .secondary-button {
+      display: inline-block;
+      border-radius: 30px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: 0.25s;
+    }
+
+    .header-button, .primary-button {
+      color: #171008;
+      background: linear-gradient(135deg, #ffe8a8, #d9a33e);
+      border: 1px solid #f7d58d;
+    }
+
+    .header-button:hover, .primary-button:hover {
+      box-shadow: 0 0 25px #dba83d55;
+      transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      color: var(--gold-light);
+      border: 1px solid var(--border);
+      background: #ffffff05;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 0 60px;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin: 18px auto;
+      max-width: 850px;
+    }
+
+    h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      max-width: 570px;
+      margin: 0 auto 26px;
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .aura-stage {
+      position: relative;
+      width: min(340px, 90vw);
+      height: 300px;
+      margin: 35px auto 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .aura-orbit {
+      position: absolute;
+      width: 285px;
+      height: 120px;
+      border: 1px solid #f5c66a55;
+      border-radius: 50%;
+      transform: rotate(-28deg);
+      box-shadow: 0 0 18px #f5c66a10;
+    }
+
+    .aura-orbit.two {
+      transform: rotate(35deg);
+      width: 260px;
+      height: 105px;
+      border-color: #ffe7a633;
+    }
+
+    .aura-orbit.three {
+      width: 220px;
+      height: 220px;
+      transform: rotate(55deg);
+      border-color: #d99d3b30;
+    }
+
+    .aura-core {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 28%, #fff9d9 0%, #ffe6a0 8%, #eeb64f 22%, #9c5a17 43%, #3c210d 66%, #100c08 78%);
+      box-shadow:
+        0 0 25px #ffc85799,
+        0 0 65px #e8a63866,
+        0 0 120px #bd791c33,
+        inset -15px -15px 30px #080604;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    .aura-core::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid #ffdf8a99;
+      box-shadow: 0 0 20px #f5c66a44;
+    }
+
+    .aura-core::after {
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff4c8;
+      filter: blur(12px);
+      top: 23px;
+      left: 30px;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.045); }
+    }
+
+    .orb-caption {
+      position: absolute;
+      bottom: 0;
+      color: var(--gold-light);
+      font-size: 10px;
+      letter-spacing: 4px;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: linear-gradient(145deg, #17140f, #0e0e0d);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      min-height: 205px;
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: #f5c66a12;
+      border: 1px solid var(--border);
+      color: var(--gold-light);
+      font-size: 20px;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .demo-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #19150f, #0d0d0c);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+    }
+
+    .demo-panel p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 12px 0 20px;
+    }
+
+    .chat-window {
+      background: #090909;
+      border: 1px solid #ffffff12;
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .chat-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #ffffff12;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+
+    .mini-orb {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff0b7, #d99d3b 35%, #38200b 75%);
+      box-shadow: 0 0 15px #f5c66a55;
+    }
+
+    .message {
+      background: #1a1711;
+      border: 1px solid #ffffff0c;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: #e8dfce;
+    }
+
+    .message.user {
+      margin-left: 25px;
+      border-color: #f5c66a30;
+      text-align: right;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chat-input input {
+      min-width: 0;
+      flex: 1;
+      background: #151411;
+      border: 1px solid #ffffff18;
+      border-radius: 22px;
+      padding: 11px 13px;
+      color: white;
+      outline: none;
+    }
+
+    .chat-input input:focus {
+      border-color: var(--gold);
+    }
+
+    .chat-input button {
+      width: 42px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--gold);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .status {
+      color: var(--gold);
+      font-size: 11px;
+      margin-top: 9px;
+      min-height: 18px;
+    }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .roadmap-item {
+      padding: 20px;
+      border-left: 2px solid var(--gold);
+      background: #ffffff04;
+    }
+
+    .roadmap-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+    .roadmap-item span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .note {
+      color: #8f887b;
+      text-align: center;
+      font-size: 11px;
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 30px 0;
+      border-top: 1px solid #ffffff10;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: var(--gold-light);
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        flex-wrap: wrap;
+      }
+
+      nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 17px;
+        flex-wrap: wrap;
+      }
+
+      .header-button {
+        padding: 10px 13px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: auto;
+      }
+
+      .demo-panel {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .roadmap {
+        grid-template-columns: 1fr;
+      }
+
+      .aura-stage {
+        height: 275px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="wrap">
+    <a class="brand" href="#">BABE AI<span>YOUR PERSONAL INTELLIGENCE</span></a>
+
+    <nav aria-label="Main navigation">
+      <a href="#experience">Experience</a>
+      <a href="#assistant">AI Preview</a>
+      <a href="#roadmap">Our Vision</a>
+    </nav>
+
+    <a class="header-button" href="#assistant">Explore BABE AI ↗</a>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow">A new kind of personal assistant</p>
+      <h1>Your world.<br><span>Your intelligence.</span></h1>
+      <p class="hero-copy">
+        Meet BABE AI — a premium assistant experience designed to bring
+        conversation, voice and everyday help together in one beautiful place.
+      </p>
+
+      <div class="hero-actions">
+        <a class="primary-button" href="#assistant">Enter the experience ↗</a>
+        <a class="secondary-button" href="#experience">Discover the vision</a>
+      </div>
+
+      <div class="aura-stage" aria-label="Golden Aura orb visual">
+        <div class="aura-orbit"></div>
+        <div class="aura-orbit two"></div>
+        <div class="aura-orbit three"></div>
+        <div class="aura-core"></div>
+        <div class="orb-caption">GOLDEN AURA EXPERIENCE</div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="experience">
+      <div class="section-heading">
+        <p class="eyebrow">One assistant. Many possibilities.</p>
+        <h2>Designed around you.</h2>
+        <p>A connected vision for your phone, computer and everyday life.</p>
+      </div>
+
+      <div class="experience-grid">
+        <article class="feature-card">
+          <div class="feature-icon">✧</div>
+          <h3>Intelligent Chat</h3>
+          <p>A clean, thoughtful space to ask questions, explore ideas and get help with tasks.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">♫</div>
+          <h3>Natural Voice</h3>
+          <p>A voice-first experience, with a warm female voice as the intended direction.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">◉</div>
+          <h3>Golden Aura</h3>
+          <p>A luminous gold energy orb that gives BABE AI its own recognisable identity.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">▣</div>
+          <h3>Mobile Experience</h3>
+          <p>Designed to feel comfortable and clear on Android phones and smaller screens.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">⌘</div>
+          <h3>Desktop Companion</h3>
+          <p>A premium computer experience for working, creating and getting things done.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">✦</div>
+          <h3>Everyday Assistance</h3>
+          <p>A foundation for useful assistant tools that can grow as the product develops.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="assistant">
+      <div class="demo-panel">
+        <div>
+          <p class="eyebrow">A first look</p>
+          <h2>Say hello to BABE AI.</h2>
+          <p>
+            Try the interface below. This first version demonstrates the
+            experience and browser-supported speech features. Full AI answers
+            will require a secure AI service connection in a later phase.
+          </p>
+          <button class="primary-button" id="voiceButton" type="button">♫ Try voice input</button>
+          <p class="status" id="voiceStatus" aria-live="polite"></p>
+        </div>
+
+        <div class="chat-window">
+          <div class="chat-top">
+            <div class="mini-orb"></div>
+            <div><strong>BABE AI</strong><br><span style="color:#aaa49a;font-size:11px">Golden Aura · Preview</span></div>
+          </div>
+
+          <div class="message">Hello there. ✨ Welcome to BABE AI. What would you like to explore?</div>
+          <div class="message user" id="userMessage">I'm ready to get started.</div>
+          <div class="message" id="assistantMessage">Your personal intelligence journey starts here.</div>
+
+          <form class="chat-input" id="chatForm">
+            <input id="chatInput" type="text" placeholder="Write a message..." aria-label="Write a message" required>
+            <button type="submit" aria-label="Send message">↑</button>
+          </form>
+          <p class="status" id="chatStatus" aria-live="polite"></p>
+        </div>
+      </div>
+      <p class="note">Preview mode: this demo does not yet connect to a live AI model.</p>
+    </section>
+
+    <section class="section wrap" id="roadmap">
+      <div class="section-heading">
+        <p class="eyebrow">The bigger picture</p>
+        <h2>Building BABE AI, step by step.</h2>
+        <p>Starting with the web experience, then growing carefully.</p>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-item">
+          <strong>01 · Website</strong>
+          <span>Establish the premium design and responsive interface.</span>
+        </div>
+        <div class="roadmap-item">
+          <strong>02 · AI & Voice</strong>
+          <span>Connect a secure AI service and improve speech interaction.</span>
+        </div>
+        <div class="roadmap-item">
+          <strong>03 · Mobile & Desktop</strong>
+          <span>Explore dedicated experiences for phones and computers.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>BABE AI</strong>
+    <p>Your personal intelligence. Built one step at a time. ✨</p>
+    <p>© <span id="year"></span> BABE AI</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+    const userMessage = document.getElementById("userMessage");
+    const assistantMessage = document.getElementById("assistantMessage");
+    const chatStatus = document.getElementById("chatStatus");
+
+    chatForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      userMessage.textContent = message;
+      assistantMessage.textContent =
+        "Thanks for trying BABE AI. This preview is ready for its secure AI connection in a future step.";
+      chatStatus.textContent = "Preview message displayed.";
+      chatInput.value = "";
+    });
+
+    const voiceButton = document.getElementById("voiceButton");
+    const voiceStatus = document.getElementById("voiceStatus");
+
+    voiceButton.addEventListener("click", function () {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!SpeechRecognition) {
+        voiceStatus.textContent =
+          "Voice input is not supported in this browser. You can still type below.";
+        return;
+      }
+
+      const recognition = new SpeechRecognition();
+      recognition.lang = "en-NG";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      voiceStatus.textContent = "Listening… Please speak.";
+
+      recognition.onresult = function (event) {
+        chatInput.value = event.results[0][0].transcript;
+        chatInput.focus();
+        voiceStatus.textContent = "Voice captured. Tap the arrow to send it.";
+      };
+
+      recognition.onerror = function () {
+        voiceStatus.textContent = "Voice input stopped. Please try again or type your message.";
+      };
+
+      recognition.onend = function () {
+        if (voiceStatus.textContent === "Listening… Please speak.") {
+          voiceStatus.textContent = "Listening ended.";
+        }
+      };
+
+      recognition.start();
+    });
+  </script>
+</body>
+</html>
