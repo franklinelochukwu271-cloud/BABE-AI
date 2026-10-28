@@ -2,691 +2,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090909">
-  <meta name="description" content="BABE AI — Your personal intelligence. Discover a premium AI experience for chat, voice and everyday assistance.">
-  <title>BABE AI — Your Personal Intelligence</title>
-
-  <style>
-    :root {
-      --bg: #090909;
-      --panel: #11100e;
-      --gold: #f5c66a;
-      --gold-light: #ffe7a6;
-      --muted: #aaa49a;
-      --border: rgba(245, 198, 106, 0.2);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background:
-        radial-gradient(ellipse at 50% 12%, #2a1d0d 0%, transparent 35%),
-        var(--bg);
-      color: #fffaf0;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    button, a {
-      font: inherit;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .brand {
-      color: var(--gold-light);
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 4px;
-    }
-
-    .brand span {
-      display: block;
-      color: var(--muted);
-      font-size: 9px;
-      letter-spacing: 3px;
-    }
-
-    nav {
-      display: flex;
-      gap: 24px;
-      color: #d2c9b8;
-      font-size: 13px;
-    }
-
-    nav a:hover {
-      color: var(--gold-light);
-    }
-
-    .header-button, .primary-button, .secondary-button {
-      display: inline-block;
-      border-radius: 30px;
-      padding: 12px 20px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 13px;
-      transition: 0.25s;
-    }
-
-    .header-button, .primary-button {
-      color: #171008;
-      background: linear-gradient(135deg, #ffe8a8, #d9a33e);
-      border: 1px solid #f7d58d;
-    }
-
-    .header-button:hover, .primary-button:hover {
-      box-shadow: 0 0 25px #dba83d55;
-      transform: translateY(-2px);
-    }
-
-    .secondary-button {
-      color: var(--gold-light);
-      border: 1px solid var(--border);
-      background: #ffffff05;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 70px 0 60px;
-      overflow: hidden;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    h1 {
-      font-size: clamp(38px, 7vw, 72px);
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin: 18px auto;
-      max-width: 850px;
-    }
-
-    h1 span {
-      color: var(--gold-light);
-    }
-
-    .hero-copy {
-      color: var(--muted);
-      max-width: 570px;
-      margin: 0 auto 26px;
-      font-size: 15px;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .aura-stage {
-      position: relative;
-      width: min(340px, 90vw);
-      height: 300px;
-      margin: 35px auto 0;
-      display: grid;
-      place-items: center;
-    }
-
-    .aura-orbit {
-      position: absolute;
-      width: 285px;
-      height: 120px;
-      border: 1px solid #f5c66a55;
-      border-radius: 50%;
-      transform: rotate(-28deg);
-      box-shadow: 0 0 18px #f5c66a10;
-    }
-
-    .aura-orbit.two {
-      transform: rotate(35deg);
-      width: 260px;
-      height: 105px;
-      border-color: #ffe7a633;
-    }
-
-    .aura-orbit.three {
-      width: 220px;
-      height: 220px;
-      transform: rotate(55deg);
-      border-color: #d99d3b30;
-    }
-
-    .aura-core {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 28%, #fff9d9 0%, #ffe6a0 8%, #eeb64f 22%, #9c5a17 43%, #3c210d 66%, #100c08 78%);
-      box-shadow:
-        0 0 25px #ffc85799,
-        0 0 65px #e8a63866,
-        0 0 120px #bd791c33,
-        inset -15px -15px 30px #080604;
-      animation: breathe 4s ease-in-out infinite;
-    }
-
-    .aura-core::before {
-      content: "";
-      position: absolute;
-      inset: -8px;
-      border-radius: 50%;
-      border: 1px solid #ffdf8a99;
-      box-shadow: 0 0 20px #f5c66a44;
-    }
-
-    .aura-core::after {
-      content: "";
-      position: absolute;
-      width: 35px;
-      height: 18px;
-      border-radius: 50%;
-      background: #fff4c8;
-      filter: blur(12px);
-      top: 23px;
-      left: 30px;
-    }
-
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.045); }
-    }
-
-    .orb-caption {
-      position: absolute;
-      bottom: 0;
-      color: var(--gold-light);
-      font-size: 10px;
-      letter-spacing: 4px;
-    }
-
-    .section {
-      padding: 60px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      font-size: clamp(26px, 4vw, 38px);
-      margin: 10px 0;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .feature-card {
-      background: linear-gradient(145deg, #17140f, #0e0e0d);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-      min-height: 205px;
-    }
-
-    .feature-icon {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      background: #f5c66a12;
-      border: 1px solid var(--border);
-      color: var(--gold-light);
-      font-size: 20px;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .demo-panel {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: center;
-      padding: 30px;
-      background: linear-gradient(135deg, #19150f, #0d0d0c);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-    }
-
-    .demo-panel p {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 12px 0 20px;
-    }
-
-    .chat-window {
-      background: #090909;
-      border: 1px solid #ffffff12;
-      border-radius: 16px;
-      padding: 18px;
-    }
-
-    .chat-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #ffffff12;
-      margin-bottom: 16px;
-      font-size: 13px;
-    }
-
-    .mini-orb {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #fff0b7, #d99d3b 35%, #38200b 75%);
-      box-shadow: 0 0 15px #f5c66a55;
-    }
-
-    .message {
-      background: #1a1711;
-      border: 1px solid #ffffff0c;
-      padding: 12px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-      font-size: 12px;
-      color: #e8dfce;
-    }
-
-    .message.user {
-      margin-left: 25px;
-      border-color: #f5c66a30;
-      text-align: right;
-    }
-
-    .chat-input {
-      display: flex;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .chat-input input {
-      min-width: 0;
-      flex: 1;
-      background: #151411;
-      border: 1px solid #ffffff18;
-      border-radius: 22px;
-      padding: 11px 13px;
-      color: white;
-      outline: none;
-    }
-
-    .chat-input input:focus {
-      border-color: var(--gold);
-    }
-
-    .chat-input button {
-      width: 42px;
-      border-radius: 50%;
-      border: 0;
-      background: var(--gold);
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .status {
-      color: var(--gold);
-      font-size: 11px;
-      margin-top: 9px;
-      min-height: 18px;
-    }
-
-    .roadmap {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .roadmap-item {
-      padding: 20px;
-      border-left: 2px solid var(--gold);
-      background: #ffffff04;
-    }
-
-    .roadmap-item strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--gold-light);
-      font-size: 14px;
-    }
-
-    .roadmap-item span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .note {
-      color: #8f887b;
-      text-align: center;
-      font-size: 11px;
-      margin-top: 18px;
-    }
-
-    footer {
-      margin-top: 30px;
-      padding: 30px 0;
-      border-top: 1px solid #ffffff10;
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    footer strong {
-      color: var(--gold-light);
-      letter-spacing: 3px;
-    }
-
-    @media (max-width: 760px) {
-      header {
-        flex-wrap: wrap;
-      }
-
-      nav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 17px;
-        flex-wrap: wrap;
-      }
-
-      .header-button {
-        padding: 10px 13px;
-      }
-
-      .hero {
-        padding-top: 48px;
-      }
-
-      .experience-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-card {
-        min-height: auto;
-      }
-
-      .demo-panel {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-
-      .roadmap {
-        grid-template-columns: 1fr;
-      }
-
-      .aura-stage {
-        height: 275px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>BABE AI — Your Personal Intelligence</title>
+<style>
+:root {
+  --bg: #080808;
+  --panel: #11110f;
+  --gold: #eab85e;
+  --bright: #ffe5a1;
+  --muted: #aaa69d;
+  --line: rgba(234,184,94,.24);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:
+    radial-gradient(ellipse at 50% 15%, #39250f 0%, transparent 32%),
+    radial-gradient(ellipse at 90% 55%, #21170b 0%, transparent 32%),
+    var(--bg);
+  color:#f8f2e6;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+.wrap { width:min(1180px,92%); margin:auto; }
+header {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; padding:22px 0;
+  border-bottom:1px solid #ffffff12;
+}
+.logo {
+  font-size:23px; font-weight:900; letter-spacing:4px;
+  color:var(--bright);
+}
+.logo small {
+  display:block; font-size:8px; letter-spacing:3px;
+  color:#a99c83; font-weight:400;
+}
+nav { display:flex; gap:25px; color:#c5bdaf; font-size:12px; }
+nav a:hover { color:var(--bright); }
+.pill {
+  display:inline-block; padding:11px 19px; border-radius:30px;
+  background:linear-gradient(135deg,#ffe8ac,#d7a044);
+  color:#1a1206; font-size:12px; font-weight:800;
+  border:1px solid #ffe2a0; cursor:pointer;
+}
+.outline {
+  display:inline-block; padding:10px 18px; border-radius:30px;
+  border:1px solid var(--line); color:var(--bright);
+  background:#ffffff04; font-size:12px; cursor:pointer;
+}
+.eyebrow {
+  color:var(--gold); text-transform:uppercase;
+  font-size:9px; font-weight:bold; letter-spacing:3px;
+}
+.hero {
+  display:grid; grid-template-columns:1fr 1fr; align-items:center;
+  min-height:490px; gap:25px; padding:48px 0 55px;
+}
+.hero-copy { max-width:500px; }
+.hero h1 {
+  font-size:clamp(40px,6vw,69px); line-height:1.04;
+  letter-spacing:-2.5px; margin:17px 0;
+}
+.hero h1 span {
+  color:var(--bright);
+  text-shadow:0 0 30px #eab85e24;
+}
+.hero-copy p.description {
+  color:var(--muted); font-size:14px; max-width:420px; margin-bottom:24px;
+}
+.actions { display:flex; flex-wrap:wrap; gap:10px; }
+.trust-line {
+  margin-top:26px; font-size:10px; color:#8c8579;
+  letter-spacing:.6px;
+}
+.orb-stage {
+  min-height:370px; position:relative; display:grid; place-items:center;
+  isolation:isolate;
+}
+.orb-halo {
+  position:absolute; width:280px; height:280px; border-radius:50%;
+  background:#c8872b12; filter:blur(25px); z-index:-2;
+}
+.orb {
+  width:154px; height:154px; position:relative; border-radius:50%;
+  background:
+    radial-gradient(ellipse at 31% 23%, #fff9d9 0%, #ffe8a2 5%,
+      #f4c15f 15%, #bd7927 32%, #61330f 53%, #201207 72%, #080807 82%);
+  box-shadow:0 0 22px #e6ad4e99,0 0 55px #e8a83f55,
+    0 0 115px #d28c2b24,inset -17px -15px 28px #050403;
+  animation:pulse 5s ease-in-out infinite;
+}
+.orb:before {
+  content:""; position:absolute; inset:-9px; border-radius:50%;
+  border:1px solid #f7d68b8c; box-shadow:0 0 20px #eab85e24;
+}
+.orb:after {
+  content:""; position:absolute; top:20px; left:30px;
+  width:42px; height:22px; border-radius:50%;
+  background:#fff5c8; filter:blur(13px);
+}
+.ring {
+  position:absolute; width:300px; height:115px; border-radius:50%;
+  border:1px solid #f1c46d73;
+  transform:rotate(-29deg);
+  box-shadow:0 0 20px #c38b3920;
+}
+.ring.r2 { width:270px; height:145px; transform:rotate(39deg); border-color:#f1d28a50; }
+.ring.r3 { width:225px; height:225px; transform:rotate(20deg); border-color:#c18b3b2c; }
+.spark {
+  position:absolute; width:5px; height:5px; border-radius:50%;
+  background:#ffe8aa; box-shadow:0 0 13px #ffce64;
+}
+.s1 { top:65px; right:22%; }
+.s2 { bottom:70px; left:19%; }
+.s3 { top:100px; left:23%; width:3px; height:3px; }
+.orb-label {
+  position:absolute; bottom:9px; text-align:center;
+  color:var(--bright); font-size:9px; letter-spacing:3px;
+}
+@keyframes pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.045); }
+}
+.section { padding:48px 0; }
+.section-head { text-align:center; margin-bottom:27px; }
+.section-head h2 { font-size:clamp(25px,4vw,37px); margin:8px 0; }
+.section-head p { color:var(--muted); font-size:12px; }
+.map-grid {
+  display:grid; grid-template-columns:1.1fr 1fr 1fr;
+  gap:15px; align-items:stretch;
+}
+.panel {
+  position:relative; overflow:hidden; min-width:0;
+  background:linear-gradient(145deg,#17140f,#0d0d0c 70%);
+  border:1px solid var(--line); border-radius:17px;
+  padding:20px; box-shadow:0 12px 35px #0004;
+}
+.panel h3 { font-size:15px; margin:6px 0; }
+.panel p { font-size:11px; color:var(--muted); }
+.panel-top {
+  display:flex; justify-content:space-between; align-items:center; gap:8px;
+}
+.tag {
+  color:var(--gold); border:1px solid var(--line);
+  border-radius:20px; padding:4px 8px; font-size:8px;
+  white-space:nowrap;
+}
+.window-dots { display:flex; gap:4px; }
+.window-dots i {
+  width:6px; height:6px; border-radius:50%; background:#9d793e;
+}
+.desktop-preview {
+  margin-top:17px; border:1px solid #ffffff18;
+  border-radius:10px; background:#090909; overflow:hidden;
+}
+.window-bar { padding:8px 10px; border-bottom:1px solid #ffffff12; }
+.desktop-content {
+  display:grid; grid-template-columns:65px 1fr; min-height:135px;
+}
+.sidebar { border-right:1px solid #ffffff12; padding:10px 6px; }
+.side-line { height:5px; background:#8f6b382e; border-radius:5px; margin:8px 0; }
+.desktop-main { padding:12px; }
+.small-orb {
+  width:48px; height:48px; margin:10px auto;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,#fff2bc,#eab85e 23%,#6a3b10 58%,#100b05 80%);
+  box-shadow:0 0 20px #eab85e55;
+}
+.skeleton { height:5px; background:#ffffff12; border-radius:4px; margin:7px auto; width:75%; }
+.skeleton.short { width:45%; }
+.chat-demo {
+  margin-top:17px; padding:11px; background:#080808;
+  border:1px solid #ffffff14; border-radius:10px;
+}
+.chat-heading { display:flex; align-items:center; gap:8px; font-size:10px; margin-bottom:12px; }
+.chat-heading .small-orb { width:23px; height:23px; margin:0; }
+.bubble {
+  background:#1b1710; color:#e5dac7; font-size:10px;
+  padding:9px; border-radius:9px; margin:7px 0;
+}
+.bubble.user { margin-left:22px; border:1px solid #eab85e30; text-align:right; }
+.fake-input {
+  margin-top:10px; border:1px solid #ffffff18; border-radius:20px;
+  padding:8px 10px; color:#817b70; font-size:9px;
+}
+.voice-art {
+  min-height:164px; display:grid; place-items:center; position:relative;
+}
+.voice-rings {
+  width:115px; height:115px; border:1px solid #eab85e50;
+  border-radius:50%; display:grid; place-items:center;
+  box-shadow:0 0 30px #eab85e13;
+}
+.voice-rings .small-orb { width:60px; height:60px; }
+.wave { display:flex; align-items:center; justify-content:center; gap:4px; margin-top:10px; }
+.wave i { display:block; width:3px; height:12px; border-radius:5px; background:var(--gold); }
+.wave i:nth-child(2),.wave i:nth-child(6) { height:20px; }
+.wave i:nth-child(3),.wave i:nth-child(5) { height:29px; }
+.wave i:nth-child(4) { height:36px; }
+.device-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:15px;
+}
+.phone-wrap { display:flex; align-items:center; justify-content:center; padding:12px 0; }
+.phone {
+  width:112px; height:184px; border:2px solid #b79b64;
+  border-radius:19px; padding:7px; background:#050505;
+  box-shadow:0 0 20px #dca44314;
+}
+.phone-screen {
+  height:100%; border-radius:12px; overflow:hidden;
+  background:radial-gradient(ellipse at 50% 35%,#38240e,#080808 70%);
+  display:flex; flex-direction:column; align-items:center; padding:14px 5px;
+}
+.phone-screen .small-orb { width:48px; height:48px; margin:23px 0 15px; }
+.phone-title { font-size:8px; letter-spacing:2px; color:var(--bright); }
+.phone-line { height:3px; background:#ffffff1a; width:60%; margin:4px; border-radius:3px; }
+.float-preview {
+  min-height:184px; display:grid; place-items:center;
+  background:radial-gradient(ellipse at center,#3b260e50,transparent 70%);
+}
+.float-orb {
+  width:78px; height:78px; border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,#fff1b7,#eab85e 22%,#75430f 56%,#0b0906 80%);
+  box-shadow:0 0 25px #eab85e99,0 0 65px #eab85e36;
+  border:1px solid #f8d78c;
+}
+.device-note { text-align:center; margin-top:9px; color:#a69a82; font-size:9px; }
+.vision-strip {
+  margin-top:17px; display:grid; grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.vision-item {
+  border-top:1px solid var(--line); padding:16px 4px;
+}
+.vision-item strong { display:block; font-size:12px; color:var(--bright); }
+.vision-item span { font-size:10px; color:var(--muted); }
+.demo {
+  display:grid; grid-template-columns:1fr 1fr; gap:25px; align-items:center;
+}
+.demo-copy p { color:var(--muted); font-size:13px; margin:12px 0 20px; }
+.chatbox {
+  border:1px solid var(--line); border-radius:16px;
+  background:#0c0c0b; padding:16px;
+}
+.chatbox .bubble { font-size:12px; }
+.chat-form { display:flex; gap:7px; margin-top:12px; }
+.chat-form input {
+  width:100%; min-width:0; background:#171612; color:white;
+  border:1px solid #ffffff1c; border-radius:24px; padding:11px;
+  outline:none; font-size:12px;
+}
+.chat-form input:focus { border-color:var(--gold); }
+.chat-form button { border:0; border-radius:50%; width:42px; flex-shrink:0; background:var(--gold); cursor:pointer; }
+.status { color:var(--gold); font-size:10px; min-height:17px; margin-top:7px; }
+.roadmap {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+}
+.roadmap article {
+  padding:20px; background:#ffffff04;
+  border:1px solid #ffffff12; border-radius:13px;
+}
+.roadmap b { display:block; color:var(--bright); font-size:12px; margin-bottom:7px; }
+.roadmap p { color:var(--muted); font-size:11px; }
+footer {
+  margin-top:45px; padding:25px 0; text-align:center;
+  border-top:1px solid #ffffff12; color:#8f887d; font-size:10px;
+}
+footer strong { display:block; color:var(--bright); letter-spacing:4px; font-size:16px; }
+footer p { margin-top:5px; }
+@media(max-width:800px) {
+  nav { gap:13px; }
+  .hero { grid-template-columns:1fr; text-align:center; padding-top:43px; gap:0; }
+  .hero-copy { margin:auto; }
+  .hero-copy p.description { margin-left:auto; margin-right:auto; }
+  .actions { justify-content:center; }
+  .orb-stage { min-height:330px; }
+  .map-grid { grid-template-columns:1fr 1fr; }
+  .map-grid .panel:first-child { grid-column:1/-1; }
+  .demo { grid-template-columns:1fr; }
+}
+@media(max-width:520px) {
+  header { flex-wrap:wrap; }
+  nav { order:3; width:100%; justify-content:space-between; font-size:10px; }
+  header > .pill { padding:9px 12px; font-size:10px; }
+  .hero h1 { letter-spacing:-1.5px; }
+  .orb-stage { transform:scale(.94); margin-top:4px; }
+  .section { padding:35px 0; }
+  .map-grid { grid-template-columns:1fr; }
+  .map-grid .panel:first-child { grid-column:auto; }
+  .device-grid { grid-template-columns:1fr 1fr; }
+  .vision-strip { grid-template-columns:1fr; gap:0; }
+  .roadmap { grid-template-columns:1fr; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation:none !important; scroll-behavior:auto !important; }
+}
+</style>
 </head>
-
 <body>
-  <header class="wrap">
-    <a class="brand" href="#">BABE AI<span>YOUR PERSONAL INTELLIGENCE</span></a>
+<header class="wrap">
+  <a class="logo" href="#">BABE AI<small>YOUR PERSONAL INTELLIGENCE</small></a>
+  <nav>
+    <a href="#map">Project Map</a>
+    <a href="#assistant">AI Assistant</a>
+    <a href="#vision">Our Vision</a>
+  </nav>
+  <a class="pill" href="#assistant">Enter BABE AI ↗</a>
+</header>
 
-    <nav aria-label="Main navigation">
-      <a href="#experience">Experience</a>
-      <a href="#assistant">AI Preview</a>
-      <a href="#roadmap">Our Vision</a>
-    </nav>
+<main>
+<section class="hero wrap">
+  <div class="hero-copy">
+    <div class="eyebrow">✦ The future of personal assistance</div>
+    <h1>Intelligence,<br>with a <span>golden touch.</span></h1>
+    <p class="description">
+      Meet BABE AI. A new personal assistant experience bringing
+      intelligent conversation, natural voice and beautiful design together.
+    </p>
+    <div class="actions">
+      <a class="pill" href="#assistant">Explore the experience ↗</a>
+      <a class="outline" href="#map">Discover the project</a>
+    </div>
+    <div class="trust-line">✦ PREMIUM DESIGN &nbsp; · &nbsp; VOICE-FIRST VISION &nbsp; · &nbsp; BUILT TO GROW</div>
+  </div>
+  <div class="orb-stage">
+    <div class="orb-halo"></div>
+    <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
+    <div class="orb"></div>
+    <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i>
+    <div class="orb-label">GOLDEN AURA EXPERIENCE</div>
+  </div>
+</section>
 
-    <a class="header-button" href="#assistant">Explore BABE AI ↗</a>
-  </header>
+<section class="section wrap" id="map">
+  <div class="section-head">
+    <div class="eyebrow">The BABE AI ecosystem</div>
+    <h2>One intelligence. Every experience.</h2>
+    <p>Our connected product vision — from desktop to voice to mobile.</p>
+  </div>
 
-  <main>
-    <section class="hero wrap">
-      <p class="eyebrow">A new kind of personal assistant</p>
-      <h1>Your world.<br><span>Your intelligence.</span></h1>
-      <p class="hero-copy">
-        Meet BABE AI — a premium assistant experience designed to bring
-        conversation, voice and everyday help together in one beautiful place.
-      </p>
-
-      <div class="hero-actions">
-        <a class="primary-button" href="#assistant">Enter the experience ↗</a>
-        <a class="secondary-button" href="#experience">Discover the vision</a>
+  <div class="map-grid">
+    <article class="panel">
+      <div class="panel-top">
+        <span class="tag">01 / DESKTOP</span>
+        <div class="window-dots"><i></i><i></i><i></i></div>
       </div>
-
-      <div class="aura-stage" aria-label="Golden Aura orb visual">
-        <div class="aura-orbit"></div>
-        <div class="aura-orbit two"></div>
-        <div class="aura-orbit three"></div>
-        <div class="aura-core"></div>
-        <div class="orb-caption">GOLDEN AURA EXPERIENCE</div>
-      </div>
-    </section>
-
-    <section class="section wrap" id="experience">
-      <div class="section-heading">
-        <p class="eyebrow">One assistant. Many possibilities.</p>
-        <h2>Designed around you.</h2>
-        <p>A connected vision for your phone, computer and everyday life.</p>
-      </div>
-
-      <div class="experience-grid">
-        <article class="feature-card">
-          <div class="feature-icon">✧</div>
-          <h3>Intelligent Chat</h3>
-          <p>A clean, thoughtful space to ask questions, explore ideas and get help with tasks.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">♫</div>
-          <h3>Natural Voice</h3>
-          <p>A voice-first experience, with a warm female voice as the intended direction.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">◉</div>
-          <h3>Golden Aura</h3>
-          <p>A luminous gold energy orb that gives BABE AI its own recognisable identity.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">▣</div>
-          <h3>Mobile Experience</h3>
-          <p>Designed to feel comfortable and clear on Android phones and smaller screens.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">⌘</div>
-          <h3>Desktop Companion</h3>
-          <p>A premium computer experience for working, creating and getting things done.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">✦</div>
-          <h3>Everyday Assistance</h3>
-          <p>A foundation for useful assistant tools that can grow as the product develops.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section wrap" id="assistant">
-      <div class="demo-panel">
-        <div>
-          <p class="eyebrow">A first look</p>
-          <h2>Say hello to BABE AI.</h2>
-          <p>
-            Try the interface below. This first version demonstrates the
-            experience and browser-supported speech features. Full AI answers
-            will require a secure AI service connection in a later phase.
-          </p>
-          <button class="primary-button" id="voiceButton" type="button">♫ Try voice input</button>
-          <p class="status" id="voiceStatus" aria-live="polite"></p>
-        </div>
-
-        <div class="chat-window">
-          <div class="chat-top">
-            <div class="mini-orb"></div>
-            <div><strong>BABE AI</strong><br><span style="color:#aaa49a;font-size:11px">Golden Aura · Preview</span></div>
+      <h3>Your intelligent workspace.</h3>
+      <p>A focused assistant experience for your computer.</p>
+      <div class="desktop-preview">
+        <div class="window-bar"><div class="skeleton short" style="margin:0;width:35%"></div></div>
+        <div class="desktop-content">
+          <div class="sidebar"><div class="side-line"></div><div class="side-line"></div><div class="side-line"></div><div class="side-line"></div></div>
+          <div class="desktop-main">
+            <div class="eyebrow" style="font-size:7px;text-align:center">HELLO, THERE</div>
+            <div class="small-orb"></div>
+            <div class="skeleton"></div><div class="skeleton short"></div>
           </div>
-
-          <div class="message">Hello there. ✨ Welcome to BABE AI. What would you like to explore?</div>
-          <div class="message user" id="userMessage">I'm ready to get started.</div>
-          <div class="message" id="assistantMessage">Your personal intelligence journey starts here.</div>
-
-          <form class="chat-input" id="chatForm">
-            <input id="chatInput" type="text" placeholder="Write a message..." aria-label="Write a message" required>
-            <button type="submit" aria-label="Send message">↑</button>
-          </form>
-          <p class="status" id="chatStatus" aria-live="polite"></p>
         </div>
       </div>
-      <p class="note">Preview mode: this demo does not yet connect to a live AI model.</p>
-    </section>
+    </article>
 
-    <section class="section wrap" id="roadmap">
-      <div class="section-heading">
-        <p class="eyebrow">The bigger picture</p>
-        <h2>Building BABE AI, step by step.</h2>
-        <p>Starting with the web experience, then growing carefully.</p>
+    <article class="panel">
+      <div class="panel-top"><span class="tag">02 / AI CHAT</span><span style="color:var(--gold)">✧</span></div>
+      <h3>A conversation that flows.</h3>
+      <p>A calm, premium space to ask and explore.</p>
+      <div class="chat-demo">
+        <div class="chat-heading"><div class="small-orb"></div><strong>BABE AI</strong></div>
+        <div class="bubble">Hello. ✨ What can I help you with today?</div>
+        <div class="bubble user">Help me organise my day.</div>
+        <div class="bubble">Let's make a plan that works for you.</div>
+        <div class="fake-input">Write a message... &nbsp; ↗</div>
       </div>
+    </article>
 
-      <div class="roadmap">
-        <div class="roadmap-item">
-          <strong>01 · Website</strong>
-          <span>Establish the premium design and responsive interface.</span>
-        </div>
-        <div class="roadmap-item">
-          <strong>02 · AI & Voice</strong>
-          <span>Connect a secure AI service and improve speech interaction.</span>
-        </div>
-        <div class="roadmap-item">
-          <strong>03 · Mobile & Desktop</strong>
-          <span>Explore dedicated experiences for phones and computers.</span>
+    <article class="panel">
+      <div class="panel-top"><span class="tag">03 / VOICE</span><span style="color:var(--gold)">♫</span></div>
+      <h3>Let your voice lead.</h3>
+      <p>A natural female-voice experience is part of our vision.</p>
+      <div class="voice-art">
+        <div class="voice-rings"><div class="small-orb"></div></div>
+      </div>
+      <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="device-note">VOICE ASSISTANT EXPERIENCE</div>
+    </article>
+  </div>
+
+  <div class="device-grid">
+    <article class="panel">
+      <div class="panel-top"><span class="tag">04 / MOBILE</span><span style="color:var(--gold)">▣</span></div>
+      <h3>BABE AI in your pocket.</h3>
+      <p>A responsive experience designed for Android and other phones.</p>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-title">BABE AI</div>
+            <div class="small-orb"></div>
+            <div class="phone-line"></div><div class="phone-line" style="width:40%"></div>
+            <div style="margin-top:auto;font-size:7px;color:#eab85e">YOUR PERSONAL AI</div>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </article>
+    <article class="panel">
+      <div class="panel-top"><span class="tag">05 / FLOATING ORB</span><span style="color:var(--gold)">◉</span></div>
+      <h3>Your assistant, within reach.</h3>
+      <p>A future always-accessible orb concept for quick interaction.</p>
+      <div class="float-preview"><div class="float-orb"></div></div>
+      <div class="device-note">GOLDEN AURA · FLOATING COMPANION CONCEPT</div>
+    </article>
+  </div>
 
-  <footer>
-    <strong>BABE AI</strong>
-    <p>Your personal intelligence. Built one step at a time. ✨</p>
-    <p>© <span id="year"></span> BABE AI</p>
-  </footer>
+  <div class="vision-strip">
+    <div class="vision-item"><strong>06 / One identity</strong><span>One coherent gold-and-black design language.</span></div>
+    <div class="vision-item"><strong>07 / Smarter assistance</strong><span>A foundation for useful AI-powered tasks.</span></div>
+    <div class="vision-item"><strong>08 / Room to grow</strong><span>Designed to expand across supported devices.</span></div>
+  </div>
+</section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+<section class="section wrap" id="assistant">
+  <div class="demo">
+    <div class="demo-copy">
+      <div class="eyebrow">Try the interface</div>
+      <h2 style="font-size:clamp(27px,4vw,39px);margin-top:10px">Your conversation starts here.</h2>
+      <p>This is an early interactive preview of the BABE AI interface. You can type a message or try browser-supported voice input. Connecting a real AI model is a separate next step.</p>
+      <button class="pill" id="voiceButton" type="button">♫ Try voice input</button>
+      <div class="status" id="voiceStatus" aria-live="polite"></div>
+    </div>
+    <div class="chatbox">
+      <div class="chat-heading"><div class="small-orb"></div><div><strong>BABE AI</strong><br><span style="color:#8e877b;font-size:9px">GOLDEN AURA · PREVIEW</span></div></div>
+      <div class="bubble">Welcome. ✨ I'm ready for you to explore this preview.</div>
+      <div class="bubble user" id="userMessage">Let's get started.</div>
+      <div class="bubble" id="assistantMessage">Your personal intelligence experience begins here.</div>
+      <form class="chat-form" id="chatForm">
+        <input id="chatInput" type="text" placeholder="Write a message..." aria-label="Write a message" required>
+        <button type="submit" aria-label="Send message">↑</button>
+      </form>
+      <div class="status" id="chatStatus" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
 
-    const chatForm = document.getElementById("chatForm");
-    const chatInput = document.getElementById("chatInput");
-    const userMessage = document.getElementById("userMessage");
-    const assistantMessage = document.getElementById("assistantMessage");
-    const chatStatus = document.getElementById("chatStatus");
+<section class="section wrap" id="vision">
+  <div class="section-head">
+    <div class="eyebrow">From vision to reality</div>
+    <h2>Built step by step.</h2>
+    <p>Every part of the product has a place in the plan.</p>
+  </div>
+  <div class="roadmap">
+    <article><b>01 · Visual foundation</b><p>Create a consistent responsive website and the Golden Aura visual identity.</p></article>
+    <article><b>02 · Real AI and voice</b><p>Connect an AI service securely and develop natural speech interaction.</p></article>
+    <article><b>03 · Devices and integration</b><p>Develop supported mobile and desktop experiences as the project grows.</p></article>
+  </div>
+</section>
+</main>
 
-    chatForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const message = chatInput.value.trim();
-      if (!message) return;
+<footer>
+  <strong>BABE AI</strong>
+  <p>YOUR PERSONAL INTELLIGENCE</p>
+  <p style="margin-top:10px">© <span id="year"></span> BABE AI · A vision in progress.</p>
+</footer>
 
-      userMessage.textContent = message;
-      assistantMessage.textContent =
-        "Thanks for trying BABE AI. This preview is ready for its secure AI connection in a future step.";
-      chatStatus.textContent = "Preview message displayed.";
-      chatInput.value = "";
-    });
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
 
-    const voiceButton = document.getElementById("voiceButton");
-    const voiceStatus = document.getElementById("voiceStatus");
+const form = document.getElementById("chatForm");
+const input = document.getElementById("chatInput");
+const userMessage = document.getElementById("userMessage");
+const assistantMessage = document.getElementById("assistantMessage");
+const chatStatus = document.getElementById("chatStatus");
 
-    voiceButton.addEventListener("click", function () {
-      const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const message = input.value.trim();
+  if (!message) return;
+  userMessage.textContent = message;
+  assistantMessage.textContent =
+    "Thanks for trying BABE AI. This preview needs a secure AI connection before it can generate real answers.";
+  chatStatus.textContent = "Preview message displayed.";
+  input.value = "";
+});
 
-      if (!SpeechRecognition) {
-        voiceStatus.textContent =
-          "Voice input is not supported in this browser. You can still type below.";
-        return;
-      }
+document.getElementById("voiceButton").addEventListener("click", function() {
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const status = document.getElementById("voiceStatus");
 
-      const recognition = new SpeechRecognition();
-      recognition.lang = "en-NG";
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
+  if (!Recognition) {
+    status.textContent = "Voice input is not available in this browser. You can type below.";
+    return;
+  }
 
-      voiceStatus.textContent = "Listening… Please speak.";
+  const recognition = new Recognition();
+  recognition.lang = "en-NG";
+  recognition.interimResults = false;
+  status.textContent = "Listening… Please speak.";
 
-      recognition.onresult = function (event) {
-        chatInput.value = event.results[0][0].transcript;
-        chatInput.focus();
-        voiceStatus.textContent = "Voice captured. Tap the arrow to send it.";
-      };
+  recognition.onresult = function(event) {
+    input.value = event.results[0][0].transcript;
+    input.focus();
+    status.textContent = "Voice captured. Tap the arrow to send your message.";
+  };
 
-      recognition.onerror = function () {
-        voiceStatus.textContent = "Voice input stopped. Please try again or type your message.";
-      };
+  recognition.onerror = function() {
+    status.textContent = "Voice input stopped. Please try again or type your message.";
+  };
 
-      recognition.onend = function () {
-        if (voiceStatus.textContent === "Listening… Please speak.") {
-          voiceStatus.textContent = "Listening ended.";
-        }
-      };
-
-      recognition.start();
-    });
-  </script>
+  recognition.start();
+});
+</script>
 </body>
-</html>
+  </html>
