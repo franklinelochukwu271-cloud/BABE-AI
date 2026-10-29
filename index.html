@@ -1716,6 +1716,101 @@ main {
   padding: 8px 5px;
   font-size: 11px;
 }
+  /* BABE AI FULL-SCREEN VOICE MODE */
+
+.voice-mode {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 25px 18px;
+  background: radial-gradient(circle at center, #211704, #050403 65%);
+  color: #fff3c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.voice-mode[hidden] {
+  display: none;
+}
+
+.voice-close {
+  position: absolute;
+  top: 25px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ffd52e80;
+  border-radius: 50%;
+  background: #171107;
+  color: #ffdf65;
+  font-size: 20px;
+}
+
+.voice-brand {
+  color: #ffdf65;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.voice-status {
+  margin-top: 35px;
+  color: #ffdf65;
+  font-size: 15px;
+}
+
+.voice-orb {
+  width: min(260px, 70vw);
+  aspect-ratio: 1;
+  margin: 35px auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid #ffe58a;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffcf46 0%, #9a5700 35%, #120b02 72%);
+  box-shadow: 0 0 25px #ffd52e, 0 0 65px #ff9e0055;
+  animation: voice-pulse 3s ease-in-out infinite;
+}
+
+.voice-orb-core {
+  color: #fff3b0;
+  font-size: 75px;
+  text-shadow: 0 0 20px #fff0a0;
+}
+
+.voice-caption {
+  color: #e0d4b5;
+  font-size: 15px;
+}
+
+.voice-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 45px;
+}
+
+.voice-controls button {
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid #ffd52e;
+  border-radius: 30px;
+  background: #171107;
+  color: #ffdf65;
+  font-size: 15px;
+}
+
+@keyframes voice-pulse {
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 40px #ffd52e, 0 0 90px #ff9e0080;
+  }
+}
 </style>
 </head>
 
@@ -1773,7 +1868,7 @@ main {
     <button type="button" class="composer-plus" aria-label="Add">＋</button>
 
     <div class="composer-right">
-      <button type="button" class="composer-mic" aria-label="Voice input">🎙</button>
+     <button type="button" class="composer-mic" id="voice-start" aria-label="Start voice conversation">🎙</button>
 
       <button type="button" class="composer-send" aria-label="Send message">
         <span class="send-idle">⚛</span>
@@ -1811,6 +1906,23 @@ main {
   </section>
 
   </section>
+  <section class="voice-mode" id="voice-mode" hidden>
+  <button type="button" class="voice-close" id="voice-close">✕</button>
+
+  <p class="voice-brand">👑 BABE AI</p>
+  <p class="voice-status" id="voice-status">Ready to talk</p>
+
+  <div class="voice-orb">
+    <div class="voice-orb-core">♛</div>
+  </div>
+
+  <p class="voice-caption">I'm here. What's on your mind?</p>
+
+  <div class="voice-controls">
+    <button type="button" id="voice-mic">🎙</button>
+    <button type="button" id="voice-end">End conversation</button>
+  </div>
+</section>
   <footer class="footer" id="get-started">
     <div class="tagline">Your Life &nbsp; • &nbsp; Smarter &nbsp; • &nbsp; Easier</div>
     <p class="footer-subtitle">BABE AI — MORE THAN AN ASSISTANT, IT'S YOUR COMPANION</p>
@@ -1850,6 +1962,12 @@ chatInput.addEventListener("input", function() {
   this.style.height = Math.min(this.scrollHeight, 160) + "px";
 
   chatSend.classList.toggle("has-text", this.value.trim().length > 0);
+});
+  const voiceStart = document.getElementById("voice-start");
+const voiceMode = document.getElementById("voice-mode");
+
+voiceStart.addEventListener("click", function() {
+  voiceMode.hidden = false;
 });
 </script>
 
