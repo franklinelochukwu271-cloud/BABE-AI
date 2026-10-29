@@ -1615,13 +1615,27 @@ main {
   border-radius: 50%;
   background: #ffdf65;
   color: #111111;
-  font-size: 26px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
+.composer-send .send-idle {
+  display: inline;
+}
 
+.composer-send .send-active {
+  display: none;
+}
+
+.composer-send.has-text .send-idle {
+  display: none;
+}
+
+.composer-send.has-text .send-active {
+  display: inline;
+}
 .composer-send:hover {
   transform: scale(1.06);
 }
