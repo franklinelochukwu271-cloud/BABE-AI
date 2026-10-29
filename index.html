@@ -1295,13 +1295,41 @@ main {
   }
 }
   /* BABE AI CHAT-STYLE EXPERIENCE */
-.babe-chat-home {
-  display: block;
-  position: relative;
+  
+..babe-chat-home {
+  width: 100%;
   min-height: 100vh;
-  background: radial-gradient(ellipse at 50% 35%, #241600, #090704 48%, #050403);
-  color: #fff9e8;
-  padding-bottom: 85px;
+  margin: 0;
+  padding: 24px 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #050505;
+  color: #ffffff;
+  position: relative;
+}
+
+.chat-home-header {
+  width: 100%;
+}
+
+.chat-home-content {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.chat-home-orb {
+  margin: 0 auto 35px;
+}
+
+.chat-composer {
+  width: 100%;
+  max-width: 650px;
+  margin: 30px auto 0;
+  box-sizing: border-box;
 }
 
 .chat-home-header {
