@@ -1486,8 +1486,12 @@ main {
 
 .chat-composer {
   width: 100%;
-  min-height: 58px;
-  padding: 7px;
+  max-width: 850px;
+  min-height: 64px;
+  padding: 9px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -1635,12 +1639,18 @@ main {
     <h2>What can I help with?</h2>
     <p class="chat-description">Ask anything. Your next idea starts here.</p>
 
-    <div class="chat-composer">
-      <button class="composer-plus" aria-label="Add">＋</button>
-      <input type="text" placeholder="Message BABE AI..." aria-label="Message BABE AI">
+    
+<div class="chat-composer">
+  <input type="text" placeholder="Message BABE AI..." aria-label="Message BABE AI">
+  <div class="composer-actions">
+    <button class="composer-plus" aria-label="Add">＋</button>
+    <div class="composer-right">
       <button class="composer-mic" aria-label="Voice input">🎙</button>
       <button class="composer-send" aria-label="Send message">➤</button>
     </div>
+  </div>
+</div>
+
 
     <p class="chat-home-note">BABE AI • Ready to help</p>
   </main>
@@ -1672,7 +1682,6 @@ main {
   <footer class="footer" id="get-started">
     <div class="tagline">Your Life &nbsp; • &nbsp; Smarter &nbsp; • &nbsp; Easier</div>
     <p class="footer-subtitle">BABE AI — MORE THAN AN ASSISTANT, IT'S YOUR COMPANION</p>
-    <a class="gold-button" href="#home">Get Started <span>➜</span></a>
   </footer>
 </main>
 
