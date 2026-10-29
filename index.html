@@ -1484,22 +1484,49 @@ main {
   border-color: #fff0a0;
 }
 
+
 .chat-composer {
   width: 100%;
   max-width: 850px;
-  min-height: 64px;
-  padding: 9px;
-  margin-left: auto;
-  margin-right: auto;
+  min-height: 85px;
+  padding: 10px 14px;
+  margin: 0 auto;
   box-sizing: border-box;
   display: flex;
-  align-items: center;
-  gap: 7px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
   border: 1px solid #ffd52e8c;
-  border-radius: 23px;
+  border-radius: 20px;
   background: #100e09;
   box-shadow: 0 0 22px #ffb00015;
 }
+
+.chat-composer input {
+  width: 100%;
+  min-height: 28px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.composer-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.composer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 
 .chat-composer input {
   flex: 1;
