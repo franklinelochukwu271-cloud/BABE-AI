@@ -1562,20 +1562,28 @@ main {
 
 <body>
 
-<header class="site-header" id="home">
-  <div class="brand babe-main-title">
-    <span class="crown">👑</span>
-    <div>
-      <div class="brand-name">BABE AI</div>
-      <div class="brand-subtitle">Your AI Companion</div>
-    </div>
-  </div>
-
-  <button class="gold-button header-cta"
+<header class="chat-home-header">
+  <button class="menu-back"
+    aria-label="Open menu"
     onclick="document.getElementById('babe-menu').hidden = !document.getElementById('babe-menu').hidden">
     ☰ Menu
   </button>
+
+  <div class="chat-home-brand">
+    <div>👑 BABE AI</div>
+    <span>Your AI Companion</span>
+  </div>
+
+  <span class="online-dot"></span>
 </header>
+
+<div class="babe-menu" id="babe-menu" hidden>
+  <a href="#home">Home</a>
+  <a href="#features">Features</a>
+  <a href="#babe-chat-home">Experience</a>
+  <a href="#about">About BABE AI</a>
+  <a href="#babe-chat-home">Desktop Assistant</a>
+</div>
 
   <section class="babe-chat-home" id="babe-chat-home">
   <header class="chat-home-header">
@@ -1583,11 +1591,6 @@ main {
     <div class="chat-home-brand">♛ BABE AI</div>
     <span class="online-dot"></span>
   </header>
-
-  <div class="babe-menu" id="babe-menu" hidden>
-    <a href="#experience">Desktop Assistant</a>
-    <a href="#about">About BABE AI</a>
-  </div>
     
   <main class="chat-home-content">
     <div class="chat-greeting">YOUR PERSONAL AI</div>
