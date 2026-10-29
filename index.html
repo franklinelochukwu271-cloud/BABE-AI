@@ -1306,6 +1306,240 @@ main {
     transition-duration: .01ms !important;
   }
 }
+  /* BABE AI CHAT-STYLE EXPERIENCE */
+.babe-chat-home {
+  display: none;
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 35%, #241600, #090704 48%, #050403);
+  color: #fff9e8;
+  padding-bottom: 85px;
+}
+
+.chat-home-header {
+  min-height: 65px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid #ffcf3940;
+}
+
+.menu-back {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #ffd52e70;
+  border-radius: 12px;
+  background: #171107;
+  color: #ffdf65;
+  font-size: 30px;
+}
+
+.chat-home-brand {
+  font-size: 19px;
+  font-weight: 800;
+  color: #ffdf65;
+}
+
+.online-dot {
+  width: 8px;
+  height: 8px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #7cff9a;
+  box-shadow: 0 0 12px #7cff9a;
+}
+
+.babe-menu {
+  position: absolute;
+  z-index: 5;
+  top: 60px;
+  left: 15px;
+  width: 220px;
+  padding: 10px;
+  border: 1px solid #ffd52e70;
+  border-radius: 14px;
+  background: #100d07;
+}
+
+.babe-menu a {
+  display: block;
+  padding: 13px 10px;
+  color: #fff0b2;
+}
+
+.chat-home-content {
+  width: min(600px, 100%);
+  min-height: calc(100vh - 150px);
+  margin: auto;
+  padding: 30px 18px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.chat-greeting {
+  color: #ffdb55;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.chat-home-content h2 {
+  margin-top: 10px;
+  font-size: clamp(25px, 6vw, 36px);
+}
+
+.chat-description {
+  margin-top: 9px;
+  color: #c9c1ae;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.chat-home-orb {
+  width: min(230px, 65vw);
+  aspect-ratio: 1;
+  margin: 20px auto 24px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffdf6550, #ffad000e 52%, transparent 72%);
+}
+
+.chat-orb-core {
+  width: 60%;
+  height: 60%;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff0a0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #fff9d3, #ffcb32 12%, #b96b06 38%, #140a00 76%);
+  box-shadow: 0 0 18px #fff0a0, 0 0 45px #ffb000, inset -12px -12px 24px #000;
+  color: #fff3a9;
+  font-size: 43px;
+  text-shadow: 0 0 14px #ffda48;
+}
+
+.chat-orb-ring {
+  position: absolute;
+  inset: 8%;
+  border: 1px solid #ffdb58;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #ffb00065;
+  pointer-events: none;
+}
+
+.ring-a {
+  transform: rotate(-25deg) scaleY(.38);
+}
+
+.ring-b {
+  inset: 2%;
+  transform: rotate(40deg) scaleY(.55);
+  border-color: #fff0a0;
+}
+
+.chat-composer {
+  width: 100%;
+  min-height: 58px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #ffd52e8c;
+  border-radius: 23px;
+  background: #100e09;
+  box-shadow: 0 0 22px #ffb00015;
+}
+
+.chat-composer input {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+}
+
+.chat-composer input::placeholder {
+  color: #b7ad97;
+}
+
+.chat-composer button {
+  flex-shrink: 0;
+  width: 37px;
+  height: 37px;
+  border: 0;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.composer-plus,
+.composer-mic {
+  background: #211a0c;
+  color: #ffdc57;
+}
+
+.composer-send {
+  background: linear-gradient(#ffe879, #ffae00);
+  color: #160f00;
+}
+
+.chat-home-note {
+  margin-top: 15px;
+  color: #9f947d;
+  font-size: 11px;
+}
+
+.chat-bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 72px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #ffcf3940;
+  background: #080704f5;
+}
+
+.chat-bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #a99e85;
+  font-size: 10px;
+}
+
+.chat-bottom-nav a span {
+  font-size: 20px;
+}
+
+.chat-bottom-nav a.active {
+  color: #ffdf65;
+}
+
+@media (max-width: 520px) {
+  .babe-chat-home {
+    min-height: 100svh;
+  }
+
+  .chat-home-content {
+    min-height: calc(100svh - 145px);
+    padding-top: 32px;
+  }
+
+  .chat-home-orb {
+    margin-top: 25px;
+  }
+}
 </style>
 </head>
 
@@ -1495,7 +1729,47 @@ main {
       <span>Made for<br>You</span>
     </div>
   </section>
+  <section class="babe-chat-home" id="babe-chat-home">
+  <header class="chat-home-header">
+    <button class="menu-back" aria-label="Open menu" onclick="document.getElementById('babe-menu').hidden = !document.getElementById('babe-menu').hidden">‹</button>
+    <div class="chat-home-brand">♛ BABE AI</div>
+    <span class="online-dot"></span>
+  </header>
 
+  <div class="babe-menu" id="babe-menu" hidden>
+    <a href="#experience">Desktop Assistant</a>
+    <a href="#about">About BABE AI</a>
+  </div>
+
+  <div class="chat-home-content">
+    <p class="chat-greeting">YOUR AI COMPANION</p>
+    <h2>What can I help with?</h2>
+    <p class="chat-description">Chat with BABE AI or speak to your golden companion.</p>
+
+    <div class="chat-home-orb" aria-label="BABE AI golden orb">
+      <div class="chat-orb-ring ring-a"></div>
+      <div class="chat-orb-ring ring-b"></div>
+      <div class="chat-orb-core">♛</div>
+    </div>
+
+    <div class="chat-composer">
+      <button class="composer-plus" aria-label="More options">＋</button>
+      <input type="text" placeholder="Message BABE AI..." aria-label="Message BABE AI">
+      <button class="composer-mic" aria-label="Voice input">🎙</button>
+      <button class="composer-send" aria-label="Send message">➤</button>
+    </div>
+
+    <p class="chat-home-note">Ask anything. Your next idea starts here.</p>
+  </div>
+
+  <nav class="chat-bottom-nav" aria-label="BABE AI navigation">
+    <a href="#home"><span>⌂</span>Home</a>
+    <a href="#features"><span>✦</span>Features</a>
+    <a class="active" href="#babe-chat-home"><span>◉</span>Experience</a>
+    <a href="#about"><span>ⓘ</span>About</a>
+  </nav>
+</section>
+  
   <footer class="footer" id="get-started">
     <div class="tagline">Your Life &nbsp; • &nbsp; Smarter &nbsp; • &nbsp; Easier</div>
     <p class="footer-subtitle">BABE AI — MORE THAN AN ASSISTANT, IT'S YOUR COMPANION</p>
