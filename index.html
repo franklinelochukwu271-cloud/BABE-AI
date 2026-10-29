@@ -1832,6 +1832,8 @@ chatInput.addEventListener("keydown", function(event) {
 chatInput.addEventListener("input", function() {
   this.style.height = "28px";
   this.style.height = Math.min(this.scrollHeight, 160) + "px";
+
+  chatSend.classList.toggle("has-text", this.value.trim().length > 0);
 });
 </script>
 
