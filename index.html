@@ -656,16 +656,45 @@ main {
 
 .orb-star {
   position: absolute;
-  color: #fff1a0;
-  font-size: 21px;
-  text-shadow: 0 0 15px #ffae00;
+  color: #fffbe0;
+  font-size: 23px;
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 12px #ffe27a,
+    0 0 24px #ffae00;
+  animation: star-glow 2.4s ease-in-out infinite alternate;
 }
 
-.star-top { top: 0; left: 48%; }
-.star-left { left: -4%; top: 48%; }
-.star-right { right: -4%; top: 48%; }
-.star-bottom { bottom: 0; left: 48%; }
+.star-top {
+  top: 0;
+  left: 48%;
+}
 
+.star-left {
+  left: -4%;
+  top: 48%;
+}
+
+.star-right {
+  right: -4%;
+  top: 48%;
+}
+
+.star-bottom {
+  bottom: 0;
+  left: 48%;
+}
+
+@keyframes star-glow {
+  from {
+    opacity: .65;
+    transform: scale(.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
 .platform {
   position: absolute;
   width: 102%;
