@@ -541,16 +541,22 @@ main {
 .orb-shell::before {
   content: "";
   position: absolute;
-  width: 28%;
-  height: 13%;
-  top: 17%;
-  left: 15%;
+  width: 36%;
+  height: 16%;
+  top: 15%;
+  left: 13%;
   transform: rotate(35deg);
   border-radius: 50%;
-  background: linear-gradient(90deg, #fff, #fff6bd88, transparent);
-  filter: blur(2px);
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #fffbdc 35%,
+    #fff0a088 70%,
+    transparent 100%
+  );
+  filter: blur(3px);
+  opacity: .95;
 }
-
 .orb-shell::after {
   content: "";
   position: absolute;
