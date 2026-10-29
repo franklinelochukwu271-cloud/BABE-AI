@@ -1333,11 +1333,10 @@ main {
   box-sizing: border-box;
 }
 
-
 .chat-home-header {
   width: 100%;
-  min-height: 90px;
-  padding: 12px 18px;
+  min-height: 100px;
+  padding: 12px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1349,27 +1348,26 @@ main {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: max-content;
+  width: calc(100% - 125px);
   text-align: center;
-  font-size: 40px;
-  font-weight: 900;
   color: #ffdf65;
+  font-weight: 900;
+  overflow-wrap: anywhere;
 }
-  
+
 .chat-home-brand > div {
-  font-size: 38px;
+  font-size: clamp(23px, 5vw, 38px);
   line-height: 1.2;
 }
 
-.chat-home-brand > div:first-child {
-  letter-spacing: 1px;
+.chat-home-brand > div span {
+  font-size: clamp(30px, 7vw, 48px);
 }
 
-
-.chat-home-brand span {
+.chat-home-brand > span {
   display: block;
   margin-top: 4px;
-  font-size: 16px;
+  font-size: clamp(10px, 2.5vw, 14px);
   font-weight: 400;
   color: #d8c99f;
 }
@@ -1377,14 +1375,15 @@ main {
 .menu-back {
   position: relative;
   z-index: 2;
+  flex-shrink: 0;
   width: auto;
-  min-height: 42px;
-  padding: 0 14px;
+  min-height: 40px;
+  padding: 0 10px;
   border: 1px solid #ffd52e70;
   border-radius: 12px;
   background: #171107;
   color: #ffdf65;
-  font-size: 15px;
+  font-size: 13px;
   cursor: pointer;
 }
 
