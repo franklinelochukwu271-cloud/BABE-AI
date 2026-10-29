@@ -1764,29 +1764,151 @@ main {
   font-size: 15px;
 }
 
-.voice-orb {
-  width: min(280px, 75vw);
+/* ===== BABE AI GOLDEN ENERGY ORB ===== */
+
+.babe-energy-orb {
+  width: min(290px, 78vw);
   aspect-ratio: 1;
-  margin: 35px auto;
+  position: relative;
   display: grid;
   place-items: center;
-  position: relative;
-  flex-shrink: 0;
-  border: 2px solid #ffe58a;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 28%, #fff4bd 0%, #ffcf46 12%, #b96b06 38%, #140a00 75%);
-  box-shadow:
-    0 0 25px #fff0a0,
-    0 0 55px #ffd52e,
-    0 0 100px #ff9e0080,
-    inset -15px -15px 30px #000;
+  margin: 35px auto;
+  isolation: isolate;
 }
 
-.voice-orb-core {
-  color: #fff3b0;
-  font-size: 75px;
-  text-shadow: 0 0 20px #fff0a0;
+/* Outer golden atmosphere */
+.orb-aura {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: #d99b25;
+  filter: blur(45px);
+  opacity: 0.35;
+  animation: aura-pulse 3s ease-in-out infinite;
+}
+
+/* Moving energy rings */
+.orb-ring {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #ffe7a0;
+  border-right-color: #c58b25;
+  box-shadow: 0 0 15px #e8b84d;
+}
+
+.ring-one {
+  animation: ring-rotate 5s linear infinite;
+}
+
+.ring-two {
+  inset: 16%;
+  border-width: 3px;
+  border-top-color: #fff0bd;
+  border-bottom-color: #a96b13;
+  animation: ring-reverse 7s linear infinite;
+}
+
+.ring-three {
+  inset: 24%;
+  border-width: 1px;
+  border-left-color: #ffe7a0;
+  border-bottom-color: #d99b25;
+  animation: ring-rotate 9s linear infinite;
+}
+
+/* Glowing central orb */
+.orb-glow {
+  width: 52%;
+  height: 52%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 32% 25%,
+      #fffde8 0%,
+      #ffe9a1 12%,
+      #e9b642 32%,
+      #9b5d0c 62%,
+      #211000 100%);
+  border: 2px solid #ffe7a0;
+  box-shadow:
+    0 0 20px #ffe7a0,
+    0 0 45px #e7a928,
+    0 0 85px #b87515,
+    inset -12px -15px 25px #180c00;
+  animation: core-breathe 3s ease-in-out infinite;
+}
+
+.orb-glow span {
+  color: #fff4c8;
+  font-size: 65px;
+  text-shadow: 0 0 20px #fff1a8;
+}
+
+/* Floating light particles */
+.orb-particle {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff0a8;
+  box-shadow: 0 0 12px 4px #e8b84d;
+}
+
+.particle-one {
+  top: 12%;
+  left: 48%;
+  animation: particle-float 3s ease-in-out infinite;
+}
+
+.particle-two {
+  right: 9%;
+  top: 48%;
+  animation: particle-float 4s ease-in-out infinite reverse;
+}
+
+.particle-three {
+  bottom: 13%;
+  left: 28%;
+  animation: particle-float 3.5s ease-in-out infinite;
+}
+
+.particle-four {
+  top: 28%;
+  left: 12%;
+  animation: particle-float 4.5s ease-in-out infinite reverse;
+}
+
+/* Animations */
+@keyframes ring-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ring-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes core-breathe {
+  0%, 100% {
+    transform: scale(0.96);
+    filter: brightness(0.95);
+  }
+  50% {
+    transform: scale(1.06);
+    filter: brightness(1.25);
+  }
+}
+
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.9); }
+  50% { opacity: 0.5; transform: scale(1.15); }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(-13px); opacity: 1; }
 }
 
   .voice-caption {
@@ -1849,11 +1971,21 @@ main {
   <main class="chat-home-content">
     <div class="chat-greeting">YOUR PERSONAL AI</div>
 
-    <div class="chat-home-orb">
-      <div class="chat-orb-ring ring-a"></div>
-      <div class="chat-orb-ring ring-b"></div>
-      <div class="chat-orb-core">♛</div>
-    </div>
+    <div class="babe-energy-orb">
+  <div class="orb-aura"></div>
+  <div class="orb-ring ring-one"></div>
+  <div class="orb-ring ring-two"></div>
+  <div class="orb-ring ring-three"></div>
+
+  <div class="orb-glow">
+    <span>♛</span>
+  </div>
+
+  <div class="orb-particle particle-one"></div>
+  <div class="orb-particle particle-two"></div>
+  <div class="orb-particle particle-three"></div>
+  <div class="orb-particle particle-four"></div>
+</div>
 
     <h2>What can I help with?</h2>
     <p class="chat-description">Ask anything. Your next idea starts here.</p>
