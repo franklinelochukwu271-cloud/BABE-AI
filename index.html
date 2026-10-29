@@ -1563,27 +1563,20 @@ main {
 <body>
 
 <header class="site-header" id="home">
-  <a href="#home" class="brand" aria-label="BABE AI home">
-    <span class="crown" aria-hidden="true">♛</span>
-    <span>
-      <span class="brand-name">BABE AI</span>
-      <span class="brand-subtitle" style="display:block">Your AI Companion</span>
-    </span>
-  </a>
+  <div class="brand babe-main-title">
+    <span class="crown">👑</span>
+    <div>
+      <div class="brand-name">BABE AI</div>
+      <div class="brand-subtitle">Your AI Companion</div>
+    </div>
+  </div>
 
-  <nav class="navigation" aria-label="Main navigation">
-    <a href="#home" style="color:#ffdf46">Home</a>
-    <a href="#features">Features</a>
-    <a href="#babe-chat-home">Experience</a>
-    <a href="#about">About</a>
-    <a href="#get-started">Get Started</a>
-  </nav>
-
-  <a class="gold-button header-cta" href="#experience">
-    Try BABE AI <span aria-hidden="true">➜</span>
-  </a>
+  <button class="gold-button header-cta"
+    onclick="document.getElementById('babe-menu').hidden = !document.getElementById('babe-menu').hidden">
+    ☰ Menu
+  </button>
 </header>
-  
+
   <section class="babe-chat-home" id="babe-chat-home">
   <header class="chat-home-header">
     <button class="menu-back" aria-label="Open menu" onclick="document.getElementById('babe-menu').hidden = !document.getElementById('babe-menu').hidden">‹</button>
